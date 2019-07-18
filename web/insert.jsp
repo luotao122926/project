@@ -13,29 +13,30 @@
 </head>
 <body>
     <form action="goodsinfoInsertServlet" method="post">
+        <input type="hidden" name="id"/>
         <table border="1">
             <tr>
                 <td>商品名称</td>
-                <td><input type="text" name="goodsinfoName" value="${goodsinfo.goodsinfoName}"/></td>
+                <td><input type="text" name="goodsinfoName" /></td>
             </tr>
             <tr>
                 <td>商品图片</td>
-                <td><input type="text" name="goodsinfoPic" value="${goodsinfo.goodsinfoPic}"/></td>
+                <td><input type="file" name="goodsinfoPic" /></td>
             </tr>
             <tr>
                 <td>商品价格</td>
-                <td><input type="text" name="goodsinfoPrice" value="${goodsinfo.goodsinfoPrice}"/></td>
+                <td><input type="text" name="goodsinfoPrice" /></td>
             </tr>
             <tr>
                 <td>商品详细信息</td>
-                <td><input type="text" name="goodsinfoDescription" value="${goodsinfo.goodsinfoDescription}"/></td>
+                <td><input type="text" name="goodsinfoDescription" /></td>
             </tr>
             <tr>
                 <td>商品库存</td>
-                <td><input type="text" name="goodsinfoStock" value="${goodsinfo.goodsinfoStock}"/></td>
+                <td><input type="text" name="goodsinfoStock" /></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="保存"/></td>
+                <td colspan="2" style="text-align: center"><input type="submit" value="保存"/></td>
             </tr>
         </table>
     </form>

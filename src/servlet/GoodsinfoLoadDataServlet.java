@@ -59,14 +59,14 @@ public class GoodsinfoLoadDataServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
         String errMsg = "";
         try {
-            String goodsinfoName = req.getParameter("goodsinfoName");
-            //判断商品名是否为空
-            if(goodsinfoName == null && "".equals(goodsinfoName)){
-                throw new Exception("商品名不能为空");
+            String id = req.getParameter("id");
+            //判断商品编号是否为空
+            if(id == null && "".equals(id)){
+                throw new Exception("商品编号不能为空");
             }
             //根据商品名进行查询
             GoodsinfoDao goodsinfoDao = new GoodsinfoDao();
-            Goodsinfo goodsinfo = new Goodsinfo(goodsinfoName);
+            Goodsinfo goodsinfo = new Goodsinfo(id);
             List<Goodsinfo> list = goodsinfoDao.findByGoodsinfo(goodsinfo);
             if(list == null && list.size() < 1){
                 throw new Exception("查找不到该商品");

@@ -11,17 +11,22 @@
 <head>
     <title>Title</title>
     <script type="text/javascript">
-        function Update(goodsinfoName){
-            window.location.href="goodsinfoLoadDataServlet?goodsinfoName=" + goodsinfoName;
+        function Update(id){
+            window.location.href="goodsinfoLoadDataServlet?id=" + id;
         }
 
         function add() {
             window.location.href="insert.jsp";
         }
+
+        function Delete(id){
+            window.location.href="goodsinfoDeleteServlet?id=" + id;
+        }
     </script>
 </head>
 <body>
         <table border="1">
+            <caption style="font-weight: bold">商品目录</caption>
             <thead>
                 <tr>
                     <th>商品名字</th>
@@ -41,13 +46,13 @@
                         <td>${goodsinfo.goodsinfoDescription}</td>
                         <td>${goodsinfo.goodsinfoStock}</td>
                         <td>
-                            <input type="submit" value="修改" onclick="Update('${goodsinfo.goodsinfoName}')"/>
-                            <input type="submit" value="删除"/>
+                            <input type="submit" value="修改" onclick="Update('${goodsinfo.id}')"/>
+                            <input type="submit" value="删除" onclick="Delete('${goodsinfo.id}')"/>
                         </td>
                     </tr>
                 </c:forEach>
                 <tr>
-                    <td colspan="6" style="text-align: center">
+                    <td colspan="7" style="text-align: center">
                         <input type="button" value="添加" onclick="add()"/>
                     </td>
                 </tr>

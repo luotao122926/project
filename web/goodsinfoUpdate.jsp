@@ -13,7 +13,7 @@
 </head>
 <body>
 <form action="goodsinfoUpdateServlet" method="post">
-    <input type="hidden" name="id" value="${id}"/>
+    <input type="hidden" name="id" value="${goodsinfo.id}"/>
     <table border="1">
         <tr>
             <td>商品名称</td>

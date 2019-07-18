@@ -50,7 +50,7 @@ public class GoodsinfoInsertServlet extends HttpServlet {
             out.println("<script type='text/javascript'>alert('保存成功');location.href='goodsinfoQueryServlet'</script>");
         }else{
             // 修改失败
-            out.println("<script type='text/javascript'>alert('保存失败: "+errMsg+"')</script>");
+            out.println("<script type='text/javascript'>alert('保存失败: "+errMsg+"');history.back();</script>");
         }
     }
 }

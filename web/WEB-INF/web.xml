@@ -57,4 +57,13 @@
         <url-pattern>/goodsinfoInsertServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>goodsinfoDeleteServlet</servlet-name>
+        <servlet-class>servlet.GoodsinfoDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>goodsinfoDeleteServlet</servlet-name>
+        <url-pattern>/goodsinfoDeleteServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

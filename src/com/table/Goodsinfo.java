@@ -16,8 +16,8 @@ public class Goodsinfo {
     private String goodsinfoDescription;
     private int goodsinfoStock;
 
-    public Goodsinfo(String goodsinfoName) {
-        this.goodsinfoName = goodsinfoName;
+    public Goodsinfo(String id) {
+        this.id = id;
     }
 
     @Override
@@ -36,7 +36,6 @@ public class Goodsinfo {
     }
 
     public String getGoodsinfoName() {
-
         return goodsinfoName;
     }
 
@@ -82,6 +81,15 @@ public class Goodsinfo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Goodsinfo(String id, String goodsinfoName, String goodsinfoPic, double goodsinfoPrice, String goodsinfoDescription, int goodsinfoStock) {
+        this.id = id;
+        this.goodsinfoName = goodsinfoName;
+        this.goodsinfoPic = goodsinfoPic;
+        this.goodsinfoPrice = goodsinfoPrice;
+        this.goodsinfoDescription = goodsinfoDescription;
+        this.goodsinfoStock = goodsinfoStock;
     }
 
     public Goodsinfo(String goodsinfoName, String goodsinfoPic, double goodsinfoPrice, String goodsinfoDescription, int goodsinfoStock) {

@@ -19,6 +19,10 @@ public class GoodsinfoDao extends ParentDao{
             StringBuffer sql = new StringBuffer();
             sql.append(" select * from goodsinfo where 1=1 ");
             if(goodsinfo != null && !"".equals(goodsinfo)) {
+                if(goodsinfo.getId() != null){
+                    sql.append(" and id = ?");
+                    goodsinfoList.add(goodsinfo.getId());
+                }
                 if (goodsinfo.getGoodsinfoName() != null) {
                     sql.append(" and goodsinfo_name = ?");
                     goodsinfoList.add(goodsinfo.getGoodsinfoName());
@@ -49,6 +53,7 @@ public class GoodsinfoDao extends ParentDao{
             rs = sta.executeQuery();
             while(rs.next()){
                 Goodsinfo entity = new Goodsinfo();
+                entity.setId(rs.getString("id"));
                 entity.setGoodsinfoName(rs.getString("goodsinfo_name"));
                 entity.setGoodsinfoPic(rs.getString("goodsinfo_pic"));
                 entity.setGoodsinfoPrice(Double.parseDouble(rs.getString("goodsinfo_price")));
@@ -71,9 +76,8 @@ public class GoodsinfoDao extends ParentDao{
         int rows = 0;
         try {
             connection = super.getConnection();
-            List<Goodsinfo> list = new ArrayList<>();
-            String sql = "insert into goodsinfo(goodsinfo_name, goodsinfo_pic,goodsinfo_price," +
-                    "goodsinfo_description,goodsinfo_stock) values(?,?,?,?,?)";
+            String sql = "insert into goodsinfo(goodsinfo_name, goodsinfo_pic , goodsinfo_price ," +
+                    "goodsinfo_description , goodsinfo_stock) values(?,?,?,?,?)";
             sta = connection.prepareStatement(sql);
             sta.setString(1,goodsinfo.getGoodsinfoName());
             sta.setString(2,goodsinfo.getGoodsinfoPic());
@@ -81,13 +85,12 @@ public class GoodsinfoDao extends ParentDao{
             sta.setString(4,goodsinfo.getGoodsinfoDescription());
             sta.setInt(5,goodsinfo.getGoodsinfoStock());
             rows = sta.executeUpdate();
-            return rows;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             super.closeAll(connection,sta,rs);
         }
-        return 0;
+        return rows;
     }
 
     //修改功能
@@ -100,17 +103,19 @@ public class GoodsinfoDao extends ParentDao{
             connection = super.getConnection();
             StringBuffer sql = new StringBuffer();
             sql.append("update goodsinfo set ");
-            sql.append(" goodsinfo_pic = ?");
+            sql.append(" goodsinfo_name = ?");
+            sql.append(" ,goodsinfo_pic = ?");
             sql.append(" ,goodsinfo_price = ?");
             sql.append(" ,goodsinfo_description = ?");
             sql.append(" ,goodsinfo_stock = ?");
-            sql.append(" where goodsinfo_name = ?");
+            sql.append(" where id = ?");
             List<Object> goodsinfoList = new ArrayList<>();
+            goodsinfoList.add(goodsinfo.getGoodsinfoName());
             goodsinfoList.add(goodsinfo.getGoodsinfoPic());
             goodsinfoList.add(goodsinfo.getGoodsinfoPrice());
             goodsinfoList.add(goodsinfo.getGoodsinfoDescription());
             goodsinfoList.add(goodsinfo.getGoodsinfoStock());
-            goodsinfoList.add(goodsinfo.getGoodsinfoName());
+            goodsinfoList.add(goodsinfo.getId());
             sta = connection.prepareStatement(sql.toString());
             if(goodsinfoList != null && goodsinfoList.size() > 0){
                 for(int i = 0 ; i < goodsinfoList.size() ; i++){
@@ -118,12 +123,30 @@ public class GoodsinfoDao extends ParentDao{
                 }
             }
             rows = sta.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            super.closeAll(connection,sta,rs);
+        }
+        return  rows;
+    }
+
+    public int goodsinfoDelete(Goodsinfo goodsinfo){
+        Connection connection = null;
+        PreparedStatement sta = null;
+        ResultSet rs = null;
+        try {
+            connection = super.getConnection();
+            String sql = "delete from goodsinfo where id = ?";
+            sta = connection.prepareStatement(sql);
+            sta.setString(1,goodsinfo.getId());
+            int rows = sta.executeUpdate();
             return rows;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             super.closeAll(connection,sta,rs);
         }
-        return  0;
+        return 0;
     }
 }

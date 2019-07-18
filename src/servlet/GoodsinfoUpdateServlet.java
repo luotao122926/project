@@ -22,19 +22,23 @@ public class GoodsinfoUpdateServlet extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
-        String goodsinfoName = req.getParameter("goodsinfoName");
-        String goodsinfoPic = req.getParameter("goodsinfoPic");
-        double goodsinfoPrice = Double.parseDouble(req.getParameter("goodsinfoPrice"));
-        String goodsinfoDescription = req.getParameter("goodsinfoDescription");
-        int goodsinfoStock = Integer.parseInt(req.getParameter("goodsinfoStock"));
         int rows = 0;
         String errMsg = "";
         try {
-            if(goodsinfoName == null && "".equals(goodsinfoName)){
+            String id = req.getParameter("id");
+            if(id == null & "".equals(id)){
+                throw new Exception("商品没有该id");
+            }
+            String goodsinfoName = req.getParameter("goodsinfoName");
+            String goodsinfoPic = req.getParameter("goodsinfoPic");
+            double goodsinfoPrice = Double.parseDouble(req.getParameter("goodsinfoPrice"));
+            String goodsinfoDescription = req.getParameter("goodsinfoDescription");
+            int goodsinfoStock = Integer.parseInt(req.getParameter("goodsinfoStock"));
+            if(goodsinfoName == null || "".equals(goodsinfoName)){
                 throw new Exception("商品名不能为空");
             }
 
-            Goodsinfo goodsinfo = new Goodsinfo(goodsinfoName,goodsinfoPic,goodsinfoPrice,
+            Goodsinfo goodsinfo = new Goodsinfo(id,goodsinfoName,goodsinfoPic,goodsinfoPrice,
                     goodsinfoDescription,goodsinfoStock);
 
             GoodsinfoDao goodsinfoDao = new GoodsinfoDao();
@@ -49,7 +53,7 @@ public class GoodsinfoUpdateServlet extends HttpServlet {
         if( rows > 0){
             req.getRequestDispatcher("goodsinfoQueryServlet").forward(req,resp);
         }else{
-            out.println("<script type='text/javascript'>alert('数据保存失败:'"+errMsg+");history.back();</script>");
+            out.println("<script type='text/javascript'>alert('数据保存失败:"+errMsg+"');history.back();</script>");
         }
 
     }
