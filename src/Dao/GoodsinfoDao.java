@@ -27,7 +27,7 @@ public class GoodsinfoDao extends ParentDao{
                     sql.append(" and goodsinfo_pic = ?");
                     goodsinfoList.add(goodsinfo.getGoodsinfoPic());
                 }
-                if (goodsinfo.getGoodsinfoPrice() != null) {
+                if (goodsinfo.getGoodsinfoPrice() > 0) {
                     sql.append(" and goodsinfo_price = ?");
                     goodsinfoList.add(goodsinfo.getGoodsinfoPrice());
                 }
@@ -35,7 +35,7 @@ public class GoodsinfoDao extends ParentDao{
                     sql.append(" and goodsinfo_description = ?");
                     goodsinfoList.add(goodsinfo.getGoodsinfoDescription());
                 }
-                if (goodsinfo.getGoodsinfoStock() != null) {
+                if (goodsinfo.getGoodsinfoStock() >0) {
                     sql.append(" and goodsinfo_stock = ?");
                     goodsinfoList.add(goodsinfo.getGoodsinfoStock());
                 }
@@ -51,9 +51,9 @@ public class GoodsinfoDao extends ParentDao{
                 Goodsinfo entity = new Goodsinfo();
                 entity.setGoodsinfoName(rs.getString("goodsinfo_name"));
                 entity.setGoodsinfoPic(rs.getString("goodsinfo_pic"));
-                entity.setGoodsinfoPrice(rs.getString("goodsinfo_price"));
+                entity.setGoodsinfoPrice(Double.parseDouble(rs.getString("goodsinfo_price")));
                 entity.setGoodsinfoDescription(rs.getString("goodsinfo_description"));
-                entity.setGoodsinfoStock(rs.getString("goodsinfo_stock"));
+                entity.setGoodsinfoStock(Integer.parseInt(rs.getString("goodsinfo_stock")));
                 list.add(entity);
             }
         } catch (Exception e) {
@@ -77,9 +77,9 @@ public class GoodsinfoDao extends ParentDao{
             sta = connection.prepareStatement(sql);
             sta.setString(1,goodsinfo.getGoodsinfoName());
             sta.setString(2,goodsinfo.getGoodsinfoPic());
-            sta.setString(3,goodsinfo.getGoodsinfoPrice());
+            sta.setDouble(3,goodsinfo.getGoodsinfoPrice());
             sta.setString(4,goodsinfo.getGoodsinfoDescription());
-            sta.setString(5,goodsinfo.getGoodsinfoStock());
+            sta.setInt(5,goodsinfo.getGoodsinfoStock());
             rows = sta.executeUpdate();
             return rows;
         } catch (Exception e) {

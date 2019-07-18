@@ -17,6 +17,9 @@
           <element id="file-copy" path="D:/jstl1.2.5/taglibs-standard-impl-1.2.5.jar" />
           <element id="file-copy" path="D:/jstl1.2.5/taglibs-standard-spec-1.2.5.jar" />
           <element id="file-copy" path="D:/jstl1.2.5/taglibs-standard-jstlel-1.2.5.jar" />
+          <element id="library" level="module" name="JUnit4" module-name="project" />
+          <element id="file-copy" path="D:/fileupload/commons-io-2.5.jar" />
+          <element id="file-copy" path="D:/fileupload/commons-fileupload-1.3.3.jar" />
         </element>
       </element>
     </root>

@@ -59,5 +59,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://D:/fileupload" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://D:/fileupload" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

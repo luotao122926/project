@@ -14,10 +14,13 @@
         function Update(goodsinfoName){
             window.location.href="goodsinfoLoadDataServlet?goodsinfoName=" + goodsinfoName;
         }
+
+        function add() {
+            window.location.href="insert.jsp";
+        }
     </script>
 </head>
 <body>
-<a href="#">添加</a>
         <table border="1">
             <thead>
                 <tr>
@@ -43,6 +46,11 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <tr>
+                    <td colspan="6" style="text-align: center">
+                        <input type="button" value="添加" onclick="add()"/>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </body>

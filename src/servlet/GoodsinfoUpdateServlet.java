@@ -21,12 +21,12 @@ public class GoodsinfoUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html:charset=utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         String goodsinfoName = req.getParameter("goodsinfoName");
         String goodsinfoPic = req.getParameter("goodsinfoPic");
-        String goodsinfoPrice = req.getParameter("goodsinfoPrice");
+        double goodsinfoPrice = Double.parseDouble(req.getParameter("goodsinfoPrice"));
         String goodsinfoDescription = req.getParameter("goodsinfoDescription");
-        String goodsinfoStock = req.getParameter("goodsinfoStock");
+        int goodsinfoStock = Integer.parseInt(req.getParameter("goodsinfoStock"));
         int rows = 0;
         String errMsg = "";
         try {

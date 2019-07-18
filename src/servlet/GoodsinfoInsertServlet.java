@@ -21,16 +21,16 @@ public class GoodsinfoInsertServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html:charset=utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         int rows = 0;
         String errMsg ="";
 
         try {
             String goodsinfoName = req.getParameter("goodsinfoName");
             String goodsinfoPic = req.getParameter("goodsinfoPic");
-            String goodsinfoPrice = req.getParameter("goodsinfoPrice");
+            double goodsinfoPrice = Double.parseDouble(req.getParameter("goodsinfoPrice"));
             String goodsinfoDescription = req.getParameter("goodsinfoDescription");
-            String goodsinfoStock = req.getParameter("goodsinfoStock");
+            int goodsinfoStock = Integer.parseInt(req.getParameter("goodsinfoStock"));
 
             if(goodsinfoName == null || "".equals(goodsinfoName)){
                 throw new Exception("商品名称不能为空");
@@ -47,10 +47,10 @@ public class GoodsinfoInsertServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         if(rows>0){
             // 表示修改成功
-            out.println("<script type='text/javascript'>alert('保存成功');location.href='studentQueryServlet';</script>");
+            out.println("<script type='text/javascript'>alert('保存成功');location.href='goodsinfoQueryServlet'</script>");
         }else{
             // 修改失败
-            out.println("<script type='text/javascript'>alert('保存失败："+errMsg+"');history.back();</script>");
+            out.println("<script type='text/javascript'>alert('保存失败: "+errMsg+"')</script>");
         }
     }
 }

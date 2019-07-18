@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html:charset=usf-8");
+        resp.setContentType("text/html;charset=usf-8");
         try {
             String userName = req.getParameter("username");
             String password = req.getParameter("password");

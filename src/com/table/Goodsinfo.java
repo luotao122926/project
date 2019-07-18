@@ -12,9 +12,9 @@ public class Goodsinfo {
     private String id;
     private String goodsinfoName;
     private String goodsinfoPic;
-    private String goodsinfoPrice;
+    private double goodsinfoPrice;
     private String goodsinfoDescription;
-    private String goodsinfoStock;
+    private int goodsinfoStock;
 
     public Goodsinfo(String goodsinfoName) {
         this.goodsinfoName = goodsinfoName;
@@ -52,11 +52,11 @@ public class Goodsinfo {
         this.goodsinfoPic = goodsinfoPic;
     }
 
-    public String getGoodsinfoPrice() {
+    public double getGoodsinfoPrice() {
         return goodsinfoPrice;
     }
 
-    public void setGoodsinfoPrice(String goodsinfoPrice) {
+    public void setGoodsinfoPrice(double goodsinfoPrice) {
         this.goodsinfoPrice = goodsinfoPrice;
     }
 
@@ -68,11 +68,11 @@ public class Goodsinfo {
         this.goodsinfoDescription = goodsinfoDescription;
     }
 
-    public String getGoodsinfoStock() {
+    public int getGoodsinfoStock() {
         return goodsinfoStock;
     }
 
-    public void setGoodsinfoStock(String goodsinfoStock) {
+    public void setGoodsinfoStock(int goodsinfoStock) {
         this.goodsinfoStock = goodsinfoStock;
     }
 
@@ -84,7 +84,7 @@ public class Goodsinfo {
         this.id = id;
     }
 
-    public Goodsinfo(String goodsinfoName, String goodsinfoPic, String goodsinfoPrice, String goodsinfoDescription, String goodsinfoStock) {
+    public Goodsinfo(String goodsinfoName, String goodsinfoPic, double goodsinfoPrice, String goodsinfoDescription, int goodsinfoStock) {
         this.goodsinfoName = goodsinfoName;
         this.goodsinfoPic = goodsinfoPic;
         this.goodsinfoPrice = goodsinfoPrice;

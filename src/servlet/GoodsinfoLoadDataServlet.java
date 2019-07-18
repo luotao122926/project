@@ -55,7 +55,7 @@ public class GoodsinfoLoadDataServlet extends HttpServlet {
         //第一步将旧数据加载或设置到新页面
         //获得商品名
         req.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html:charset=utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         resp.setCharacterEncoding("utf-8");
         String errMsg = "";
         try {

@@ -12,5 +12,6 @@
   </head>
   <body>
   $END$
+  <script type='text/javascript'>var errMsg='1';alert('保存失败：'+errMsg);</script>
   </body>
 </html>

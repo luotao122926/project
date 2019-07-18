@@ -23,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         resp.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html:charset=usf-8");
+        resp.setContentType("text/html;charset=usf-8");
         int rows = 0;
         String errMsg = "";
         try {
